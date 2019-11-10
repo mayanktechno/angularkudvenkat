@@ -1,0 +1,56 @@
+<!-- <table style="border: 1px solid black" >
+        <tr style="border: 1px solid black">
+        <td style="border: 1px solid black"> Name : </td>
+        <td style="border: 1px solid black" >{{name }}</td>
+        </tr>
+        <tr style="border: 1px solid black"> 
+                <td style="border: 1px solid black">age : </td>
+                <td style="border: 1px solid black">{{age}}</td>
+                </tr>
+                <tr style="border: 1px solid black" *ngIf = showDetail>
+                        <td style="border: 1px solid black">technology : </td>
+                        <td style="border: 1px solid black">{{technology}}</td>
+                        </tr>
+                        <tr style="border: 1px solid black" *ngIf = showDetail>
+                                <td style="border: 1px solid black">company : </td>
+                                <td style="border: 1px solid black">{{company}}</td>
+                                </tr>
+    </table>
+    <button (click)="togggleDetail()">{{showDetail ? 'hide' :'show'}}Detail</button> <br/><br/> -->
+    <br/>
+    <!-- Two way data -binding  -->
+    <input type="text" [value] = "name" (input) = "name = $event.target.value">
+
+    <h3> my name  is   : {{name}}</h3>
+
+    <input type="text" [(ngModel)] = "company">
+
+    <h3> my name  is   : {{company}}</h3>
+
+<app-employeecount [all]=getAllEmployee()
+[male]="getAllMaleEmployee()"
+[female]="getAllFemaleEmployee()"></app-employeecount>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>salary</th>
+        <th>Gender</th>
+        <th>Technology</th>
+        <th>Dob </th>
+
+        </tr>
+    <tr *ngFor="let d of data">
+        <td>{{d.name | uppercase | nametitle : d.gender}}</td>
+        <td>{{d.age}}</td>
+        <td>{{d.salary |  annualsalary | currency :"$":true }}</td>
+        <td>{{d.gender}}</td>
+        <td>{{d.technology}}</td>
+        <td>{{d.dob | date :'dd/MM/y' |uppercase}}</td>
+        
+    </tr>
+    </table>
+    <div *ngIf = "!data ||data.length ==0">
+        No employee Are there
+    </div>
