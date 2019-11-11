@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../model/employeeinterface'
-import {EmployeeData} from '../employeedata'
+// import {EmployeeData} from '../employeedata'
+import { EmployeeService } from './employee.service';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -8,7 +9,8 @@ import {EmployeeData} from '../employeedata'
 })
 export class EmployeeComponent implements OnInit {
 
-  data = EmployeeData;
+  //  data : Employee [] = EmployeeData;
+  data :  Employee []
   name :string = "mayank";
   age : number =24;
   technology :  string ="angular";
@@ -17,9 +19,11 @@ export class EmployeeComponent implements OnInit {
   showDetail = false;
 
   employeeCountRadioButtonValue = 'All';
-  constructor() { }
+  constructor(private _employeeService : EmployeeService) { }
 
   ngOnInit() {
+    this.data = this._employeeService.getEmployee();
+  console.log(this.data ,"data by service")
   }
   togggleDetail(){
     this.showDetail = !this.showDetail;
