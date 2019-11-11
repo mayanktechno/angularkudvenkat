@@ -15,6 +15,8 @@ export class EmployeeComponent implements OnInit {
   company :string = 'appinventriv';
 
   showDetail = false;
+
+  employeeCountRadioButtonValue = 'All';
   constructor() { }
 
   ngOnInit() {
@@ -22,6 +24,13 @@ export class EmployeeComponent implements OnInit {
   togggleDetail(){
     this.showDetail = !this.showDetail;
   }
+
+  employeeCountShow(selectedValue){
+    console.log(selectedValue,"selected value");
+    this.employeeCountRadioButtonValue = selectedValue;
+  }
+
+
 
   getAllEmployee(){
     return this.data.length;

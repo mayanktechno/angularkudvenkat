@@ -9,8 +9,9 @@ import { EmployeecountModule } from '../employeecount/employeecount.module';
 
 
 
+
 @NgModule({
-  declarations: [EmployeeComponent ,AnnualsalaryPipe,NametitlePipe],
+  declarations: [EmployeeComponent, AnnualsalaryPipe, NametitlePipe],
   imports: [
     CommonModule,
     FormsModule,

@@ -29,7 +29,8 @@
 
 <app-employeecount [all]=getAllEmployee()
 [male]="getAllMaleEmployee()"
-[female]="getAllFemaleEmployee()"></app-employeecount>
+[female]="getAllFemaleEmployee()"
+(onRadioButtonChanged) = " employeeCountShow($event)"></app-employeecount>
 
 <table>
     <tr>
@@ -41,15 +42,18 @@
         <th>Dob </th>
 
         </tr>
-    <tr *ngFor="let d of data">
+
+    <ng-container *ngFor="let d of data"  > 
+   
+    <tr *ngIf="employeeCountRadioButtonValue =='All' || employeeCountRadioButtonValue == d.gender">
         <td>{{d.name | uppercase | nametitle : d.gender}}</td>
         <td>{{d.age}}</td>
-        <td>{{d.salary |  annualsalary | currency :"$":true }}</td>
-        <td>{{d.gender}}</td>
+        <td>{{d.salary |  annualsalary | currency :"$"}}</td>
+        <td>{{d.gender | titlecase}}</td>
         <td>{{d.technology}}</td>
-        <td>{{d.dob | date :'dd/MM/y' |uppercase}}</td>
-        
+        <td>{{d.dob | date :'dd/MM/y' |uppercase}}</td>  
     </tr>
+    </ng-container>
     </table>
     <div *ngIf = "!data ||data.length ==0">
         No employee Are there
